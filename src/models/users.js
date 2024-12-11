@@ -12,3 +12,28 @@ export const getUser = async (user_id) => {
     return {};
   }
 };
+
+export const loginUser = async (mail, pass) => {
+  try {
+    const response = await axios.post(`${usersUrl}/login`, {
+      email: mail,
+      password: pass,
+    });
+    return response.data;
+  } catch (error) {
+    return null;
+  }
+};
+
+export const registerUser = async (mail, name, pass) => {
+  try {
+    const response = await axios.post(`${usersUrl}/register`, {
+      username: name,
+      email: mail,
+      password: pass,
+    });
+    return response.data;
+  } catch (error) {
+    return null;
+  }
+};

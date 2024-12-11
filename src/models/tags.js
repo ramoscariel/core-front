@@ -12,3 +12,13 @@ export const getPostTags = async (post_id) => {
     return [];
   }
 };
+
+// get all tags
+export const getTags = async () => {
+  try {
+    const response = await axios.get(tagsUrl);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};

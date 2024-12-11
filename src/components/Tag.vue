@@ -33,6 +33,10 @@ const updateSelectedTag = (val) => {
     selectedTag.value = val;
 };
 
+const getSelectedTag = () => {
+    return selectedTag.value;
+}
+
 const filterTags = () => {
     if (!props.tags.length || searchTerm.value.trim() === '') {
         filteredTags.value = [];
@@ -45,4 +49,8 @@ const filterTags = () => {
         )
         .slice(0, 5);
 };
+
+defineExpose({
+  getSelectedTag,
+});
 </script>

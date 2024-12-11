@@ -3,6 +3,5 @@
 </script>
 
 <template>
-<h1>Notes</h1>
-<RouterView></RouterView>
+
 </template>

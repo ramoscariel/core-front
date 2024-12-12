@@ -50,7 +50,13 @@ const filterTags = () => {
         .slice(0, 5);
 };
 
+const reset = () => {
+  updateSelectedTag(null);
+  searchTerm.value = '';
+}
+
 defineExpose({
   getSelectedTag,
+  reset,
 });
 </script>

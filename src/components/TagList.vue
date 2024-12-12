@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { ref,onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { getTags } from '@/models/tags';
 import Tag from './Tag.vue';
 
@@ -32,6 +32,31 @@ const getSelectedTags = () => {
     return selectedTags;
 }
 
+const getTagNames = () => {
+    const selectedTags = getSelectedTags();
+    const tag_names = new Set();
+
+    for (let i = 0; i < selectedTags.length; i++) {
+        const tag = selectedTags[i];
+
+        if (!tag || tag.tag_name.trim() === '') {
+            continue;
+        }
+
+        if (!tag_names.has(tag.tag_name)) {
+            tag_names.add(tag.tag_name.trim());
+        }
+    }
+
+    return Array.from(tag_names);
+};
+
+
+const reset = () => {
+    tagCount.value = 1
+    tagsRef.value[0].reset();
+};
+
 onMounted(async () => {
     try {
         tags.value = await getTags();
@@ -42,5 +67,7 @@ onMounted(async () => {
 
 defineExpose({
     getSelectedTags,
+    getTagNames,
+    reset,
 });
 </script>

@@ -30,14 +30,14 @@ It communicates with a [backend](https://github.com/ramoscariel/core-back) deplo
 A basic implementation of login/register functionality.
 A "Login Session" is handled using jwt which is also used to authorize "protected actions" like creating or editing posts.
 
-## Post Creation
+### Post Creation
 
 A post is a very simple data entity which is also related to 1 or more tags. This guarantees that all posts are findable through tag filers.
 
-## Votes
+### Votes
 
 Users can vote positively or negatively to a post and everyone can see what posts are liked by what user.
 
-## Filters
+### Filters
 
 Allow to search content by **Title**, **Tags**, and **Creation Date**.

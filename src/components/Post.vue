@@ -9,7 +9,7 @@
         </p>
         <p>Votes: {{ votes }}</p>
         <p>Created: {{ post.creation_time }}</p>
-        <p>by: {{ author.username }}</p>
+        <router-link :to="`/profile/${author.user_id}`"><p>by: {{ author.username }}</p></router-link>
         <MdPreview id="preview-only" language="en-US" :modelValue="post.content" />
     </article>
 </template>

@@ -26,8 +26,12 @@ const removeTag = () => {
 
 const getSelectedTags = () => {
     const selectedTags = [];
-    tagsRef.value.forEach(tag => {
-        selectedTags.push(tag.getSelectedTag());
+    tagsRef.value.forEach(tagElem => {
+        const val = tagElem.getSelectedTag();
+        if (!val || val.tag_name.trim() === '') {
+            return;
+        }
+        selectedTags.push(val);
     });
     return selectedTags;
 }

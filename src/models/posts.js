@@ -14,11 +14,42 @@ export const getPost = async (post_id) => {
 };
 
 //get all posts
-export const getPosts = async() => {
+export const getPosts = async () => {
   try {
     const response = await axios.get(postsUrl);
     return response.data;
   } catch (error) {
     console.error(error);
   }
-}
+};
+
+//create post
+export const createPost = async (
+  token,
+  title,
+  content,
+  parentPostId = null
+) => {
+  try {
+    const response = await axios.post(
+      postsUrl,
+      {
+        title,
+        content,
+        parent_post_id: parentPostId,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Send the token in the Authorization header
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Error creating post:",
+      error.response?.data || error.message
+    );
+    throw error; // Rethrow the error for further handling
+  }
+};

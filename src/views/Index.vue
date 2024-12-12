@@ -1,4 +1,6 @@
 <template>
+  <router-link to="/create">Crear</router-link>
+  <h2>Filters</h2>
   <Filters @filtersCleared="onFiltersCleared" @filtersSet="onFiltersSet"></Filters>
   <div class="posts-container">
     <Post v-for="post in posts" :key="post.post_id" :postId="post.post_id"></Post>

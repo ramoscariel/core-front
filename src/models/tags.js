@@ -71,3 +71,18 @@ export const associateTagToPost = async (token, post_id, tag_id) => {
     console.log("Asociacion ya existe");
   }
 };
+
+// delete all tags related to a post
+export const deletePostTags = async (token, post_id) => {
+  try {
+    const response = await axios.delete(`${tagsUrl}/post/${post_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting tags:", error);
+    throw error; // Optionally rethrow the error for the caller to handle
+  }
+};

@@ -75,3 +75,21 @@ export const createPost = async (
     throw error; // Rethrow the error for further handling
   }
 };
+
+export const updatePost = async (token, post_id, title, content) => {
+  try {
+    const response = await axios.put(
+      `${postsUrl}/${post_id}`,
+      { title, content },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error updating post:", error);
+    throw error;
+  }
+};

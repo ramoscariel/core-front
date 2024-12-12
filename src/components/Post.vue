@@ -13,6 +13,9 @@
             <p>Your Vote: {{ user_vote.vote_value }}</p>  
             <button type="button" @click="like">Like</button>
             <button type="button" @click="dislike">Dislike</button>
+            <div v-if="String(author.user_id) === user_id">
+                <RouterLink :to="`/edit/${post.post_id}`">Edit</RouterLink>
+            </div>
         </div>
         <router-link :to="`/profile/${author.user_id}`"><p>by: {{ author.username }}</p></router-link>
         <MdPreview id="preview-only" language="en-US" :modelValue="post.content" />
@@ -108,6 +111,7 @@ onMounted(async () => {
         votes.value = await getPostVotes(props.postId);
         tags.value = await getPostTags(props.postId);
         author.value = await getUser(post.value.author_id);
+
 
         if(!isLoggedIn.value){
             return;

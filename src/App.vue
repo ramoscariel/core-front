@@ -34,7 +34,7 @@ const logout = () => {
     localStorage.removeItem('user_id');
     isLoggedIn.value = false;
     user_id.value = null;
-    router.push('/');
+    router.push('/login');
 }
 
 watch(route, () => {

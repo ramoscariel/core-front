@@ -9,7 +9,8 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { getAllPosts } from '@/util/postsInit';
+import { getPosts } from '@/models/posts';
+import { addTagsToPosts } from '@/util/postsInit';
 import { filterPosts } from '@/util/postsFilter';
 import Filters from '@/components/Filters.vue';
 import Post from '@/components/Post.vue';
@@ -27,7 +28,8 @@ const onFiltersCleared = () => {
 
 onMounted(async () => {
   try {
-    allPosts = await getAllPosts();
+    allPosts = await getPosts();
+    addTagsToPosts(allPosts);
     posts.value = allPosts;
   } catch (error) {
     console.error('Error fetching posts:', error);

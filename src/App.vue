@@ -8,7 +8,7 @@
             <router-link to="/register">Register</router-link>
         </div>
         <div v-else>
-            <!--<router-link to="/profile">Profile</router-link>-->
+            <router-link :to="`/profile/${user_id}`">Profile</router-link>
             <button @click="logout">Log out</button>
         </div>
     </header>
@@ -22,15 +22,18 @@ import { ref, onMounted, watch } from 'vue';
 const route = useRoute()
 const router = useRouter();
 const isLoggedIn = ref(false)
+const user_id = ref(null)
 
 const checkLoginStatus = () => {
   isLoggedIn.value = !!localStorage.getItem('token')
+  user_id.value = localStorage.getItem('user_id');
 }
 
 const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user_id');
     isLoggedIn.value = false;
+    user_id.value = false;
     router.push('/');
 }
 

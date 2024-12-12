@@ -23,6 +23,28 @@ export const getPosts = async () => {
   }
 };
 
+// get user's liked posts
+
+export const getLikedPosts = async (user_id) => {
+  try {
+    const response = await axios.get(`${postsUrl}/liked/${user_id}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// get user's published posts
+
+export const getPostedPosts = async (user_id) => {
+  try {
+    const response = await axios.get(`${postsUrl}/posted/${user_id}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 //create post
 export const createPost = async (
   token,

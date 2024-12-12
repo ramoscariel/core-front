@@ -34,7 +34,6 @@ onMounted(async () => {
   } catch (error) {
     console.error('Error fetching posts:', error);
   }
-  console.log(allPosts);
 });
 
 </script>

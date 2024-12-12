@@ -33,7 +33,7 @@ const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user_id');
     isLoggedIn.value = false;
-    user_id.value = false;
+    user_id.value = null;
     router.push('/');
 }
 

@@ -1,2 +1,2 @@
-const baseURL = 'http://localhost:3000';
+const baseURL = 'https://core-back-gqk4.onrender.com';
 export default baseURL;

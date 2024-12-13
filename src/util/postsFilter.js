@@ -8,30 +8,29 @@ export const filterPosts = (posts, title, fromDate, toDate, tags) => {
     );
   }
 
-  // filter by date
+  // Filter by date
   if (fromDate) {
-    const from = new Date(fromDate + "T00:00:00"); // Explicitly set to start of the day in local time
+    const from = new Date(fromDate).setUTCHours(0, 0, 0, 0); // Normalize to UTC start of the day
     filteredPosts = filteredPosts.filter((post) => {
-      const postDate = new Date(post.creation_time);
+      const postDate = new Date(post.creation_time).setUTCHours(0, 0, 0, 0); // Normalize post date to UTC start of the day
       return postDate >= from;
     });
   }
 
   if (toDate) {
-    const to = new Date(toDate + "T23:59:59"); // Explicitly set to end of the day in local time
+    const to = new Date(toDate).setUTCHours(23, 59, 59, 999); // Normalize to UTC end of the day
     filteredPosts = filteredPosts.filter((post) => {
-      const postDate = new Date(post.creation_time);
+      const postDate = new Date(post.creation_time).setUTCHours(23, 59, 59, 999); // Normalize post date to UTC end of the day
       return postDate <= to;
     });
   }
 
-  // filter by tags
+  // Filter by tags
   if (tags.length > 0) {
     filteredPosts = filteredPosts.filter((post) => {
-      // skip posts with no tags
-      if (!post.tags || post.tags.length === 0) return false;
+      if (!post.tags || post.tags.length === 0) return false; // Skip posts with no tags
 
-      // check if all provided tags match
+      // Check if all provided tags match
       return tags.every((filterTag) =>
         post.tags.some((tag) => filterTag === tag.tag_name)
       );

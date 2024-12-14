@@ -1,5 +1,9 @@
 # core-front
 
+## Video Clase
+
+https://udlaec.sharepoint.com/:v:/r/sites/Section_2729362848/Shared%20Documents/General/Recordings/ISWZ%203101-02-20241212_202105-Grabaci%C3%B3n%20de%20la%20reuni%C3%B3n.mp4?csf=1&web=1&e=HkPRr7&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
 ## Project Setup
 
 ```sh
